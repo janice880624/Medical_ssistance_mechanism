@@ -1,5 +1,5 @@
-clc
-clear all
+clc % 清除命令窗口的內容
+clear all % 清除工作空間的所有變量
 close all
 % COM_CONVEYOR = serial('com5');
 % set(COM_CONVEYOR, 'BaudRate', 9600);
@@ -8,18 +8,18 @@ close all
 % set(COM_CONVEYOR, 'StopBit', 1);
 % set(COM_CONVEYOR,'Terminator','CR/LF');
 objectleft=0;
-Im=imread('new.jpg');
+Im=imread('new.jpg'); %照片檔讀取
 % 轉成灰階圖
-I=rgb2gray(im2double(Im));
+I=rgb2gray(im2double(Im)); %轉成灰階圖
 I(I<0.8)=0;
 I(I>=0.8)=1;
-se = strel('cube',3);
-I= imerode(I,se);
-I=imdilate(I,se);
-[L, n]=bwlabel(I); %label the object, L:pixel array with 1,2,3..n, n:number of object.
+se = strel('cube',3); %建立長度為3的立方體
+I= imerode(I,se); %圖像腐蝕
+I=imdilate(I,se); %圖像膨脹
+[L, n]=bwlabel(I); %對二維二值圖像中的連通分量進行標注
 sizeI=size(I);
 Object_struct=struct('object',zeros(sizeI(1),sizeI(2)),'theta',0,'centroid',zeros(1,2),...
-                     'point1',zeros(1,2),'point2',zeros(1,2));
+                     'point1',zeros(1,2),'point2',zeros(1,2)); %創建一個新的結構體
 for objectcount=1:n
     object=zeros(sizeI(1),sizeI(2));
     totalx_O=0;
