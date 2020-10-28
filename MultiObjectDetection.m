@@ -1,12 +1,7 @@
 clc % 清除命令窗口的內容
 clear all % 清除工作空間的所有變量
 close all
-% COM_CONVEYOR = serial('com5');
-% set(COM_CONVEYOR, 'BaudRate', 9600);
-% set(COM_CONVEYOR, 'Parity', 'none');
-% set(COM_CONVEYOR, 'DataBits', 8);
-% set(COM_CONVEYOR, 'StopBit', 1);
-% set(COM_CONVEYOR,'Terminator','CR/LF');
+
 objectleft=0;
 Im=imread('new.jpg'); %照片檔讀取
 % 轉成灰階圖
